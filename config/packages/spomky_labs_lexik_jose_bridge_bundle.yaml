@@ -1,0 +1,20 @@
+lexik_jose:
+    ttl: 3600
+    key_index: 0
+    server_name: 'https://idsvr.example.com/oauth/anonymous'
+    audience: 'demo-client'
+    key_set_remote:
+        type: 'jku'
+        url: 'https://idsvr.example.com/oauth/anonymous/jwks'
+    signature_algorithm: "RS256"
+    mandatory_claims:
+        - 'jti'
+        - 'myClaim'
+    claim_checked:
+        - 'my_claim_checker'
+
+jose:
+    jku_factory:
+        enabled: true
+        client: 'httplug.client.app' # The Httplug client
+        request_factory: 'Psr\Http\Message\RequestFactoryInterface'

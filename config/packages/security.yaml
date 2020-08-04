@@ -1,0 +1,16 @@
+security:
+    providers:
+        jwt:
+            lexik_jwt: ~
+
+    firewalls:
+        api:
+            provider: jwt
+            pattern:   ^/api
+            stateless: true
+            guard:
+                authenticators:
+                    - lexik_jwt_authentication.jwt_token_authenticator
+
+    access_control:
+        - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
